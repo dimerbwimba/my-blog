@@ -13,7 +13,7 @@ interface SingleBlogPageProps {
 export const revalidate = 3600 
 
 const getBlog = (async(slug:string) => {
-    const response = await axios.get(`http://localhost:3000/api/single_blog?slug=${slug}`)
+    const response = await axios.get(`https://explorewisetips.netlify.app/api/single_blog?slug=${slug}`)
     const { blog } = await response.data
 
     return blog

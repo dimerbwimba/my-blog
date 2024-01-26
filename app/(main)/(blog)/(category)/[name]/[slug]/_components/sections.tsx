@@ -23,7 +23,7 @@ const  HtmlContent = ({...props}) => {
 export default async function Sections({ _id }: SectionsProps) {
   try {
     const response = await axios.get(
-      `http://localhost:3000/api/single_blog_sections?id=${_id}`
+      `https://explorewisetips.netlify.app/api/single_blog_sections?id=${_id}`
     );
     const { sections } = await response.data;
     return (
