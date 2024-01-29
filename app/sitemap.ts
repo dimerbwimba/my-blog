@@ -2,7 +2,7 @@ import axios from "axios";
 import { MetadataRoute } from "next";
 
 export default async function sitemap():Promise<MetadataRoute.Sitemap>{
-    const response = await axios.get(`http://localhost:3000/api/sitemap/blogs`)
+    const response = await axios.get(`https://explorewisetips.com/api/sitemap/blogs`)
     const { documents } = await response.data
 
     const blogEntries:MetadataRoute.Sitemap = documents.map(({slug, category_name, coverImage}:{slug:string, category_name:string, coverImage:string})=>({
