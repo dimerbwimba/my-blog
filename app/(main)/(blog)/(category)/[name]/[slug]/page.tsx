@@ -9,7 +9,7 @@ import { fetcher } from "@/lib/utils";
 
 
 interface SingleBlogPageProps {
-    params: { slug: string }
+    params: { slug: string, name:string }
 }
 
 export const revalidate = 3600 
@@ -33,6 +33,7 @@ export async function generateStaticParams() {
 
 
 export async function generateMetadata({ params }: SingleBlogPageProps): Promise<Metadata> {
+    
     const blog = await getBlog(params.slug)
     const { title_seo, description, coverImage, author, created_at, updated_at } = blog
     return {
@@ -41,6 +42,9 @@ export async function generateMetadata({ params }: SingleBlogPageProps): Promise
                 name:author
             }
         ],
+        alternates:{
+            canonical:`${process.env.NEXT_PUBLIC_BASE_URL}/${params.name}/${params.slug}`
+        },
         title: title_seo,
         description: description,
         twitter:{
@@ -56,7 +60,7 @@ export async function generateMetadata({ params }: SingleBlogPageProps): Promise
         },
         openGraph: {
             type:"article",
-            url:"https://explorewisetips.com",
+            url:`${process.env.NEXT_PUBLIC_BASE_URL}`,
             authors:[author],
             modifiedTime:updated_at,
             publishedTime: created_at , 

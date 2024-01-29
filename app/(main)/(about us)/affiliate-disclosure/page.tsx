@@ -5,6 +5,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Affiliate Disclosure",
+    alternates:{
+        canonical:`${process.env.NEXT_PUBLIC_BASE_URL}/affiliate-disclosure`
+    },
     description: "Our mission, extending to our participation in affiliate marketing programs",
     twitter:{
       card:"summary_large_image"

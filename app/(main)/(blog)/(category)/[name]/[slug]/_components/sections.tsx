@@ -1,8 +1,7 @@
-import axios from "axios";
 import { AlertOctagon } from "lucide-react";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
-import { isURL } from "@/lib/utils";
+import { fetcher, isURL } from "@/lib/utils";
 
 interface SectionsProps {
   _id: string;
@@ -25,10 +24,10 @@ const  HtmlContent = ({...props}) => {
 
 export default async function Sections({ _id }: SectionsProps) {
   try {
-    const response = await axios.get(
-      `http://localhost:3000/api/single_blog_sections?id=${_id}`
+    const response = await fetcher(
+      `/api/single_blog_sections?id=${_id}`
     );
-    const { sections } = await response.data;
+    const { sections } = await response;
     return (
       <div className=" prose prose-lg">
         {sections.map((item: SectionItem) => (

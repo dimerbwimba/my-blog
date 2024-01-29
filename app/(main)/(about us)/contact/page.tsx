@@ -2,6 +2,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Contact",
+    alternates:{
+        canonical:`${process.env.NEXT_PUBLIC_BASE_URL}/contact`
+    },
     description: "Get in contact with us",
     twitter:{
       card:"summary_large_image"

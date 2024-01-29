@@ -3,6 +3,9 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Disclaimer",
+    alternates:{
+        canonical:`${process.env.NEXT_PUBLIC_BASE_URL}/disclaimer`
+    },
     description: "Information and  any questions about our site's disclaimer",
     twitter:{
       card:"summary_large_image"

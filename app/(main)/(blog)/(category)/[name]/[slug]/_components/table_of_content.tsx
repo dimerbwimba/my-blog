@@ -1,11 +1,11 @@
-import axios from "axios";
+import { fetcher } from "@/lib/utils";
 import { AlertCircle, AlertOctagon } from "lucide-react";
 import Link from "next/link";
 
 export default  async function  TableOfContent({...props}) {
     try {
-        const response = await axios.get(`http://localhost:3000/api/sections_single_blog?id=${props?._id}`)
-        const {sections} = await response.data
+        const response = await fetcher(`/api/sections_single_blog?id=${props?._id}`)
+        const {sections} = await response
             return ( 
                 <div className=" flex justify-center">
                     <div className="px-2 mx-2 w-4/5 ">

@@ -13,9 +13,16 @@ export const metadata: Metadata = {
     default: "Explore Wise Tips",
     template: "%s"
   },
+  alternates:{
+    canonical:"https://explorewisetips.com"
+  },
   description: "Explore Wise Tips: Your key to savvy travel advice. Unlock unforgettable journeys with expert tips and destination guides. Explore the world wisely!",
   twitter: {
     card: "summary_large_image"
+  },
+  openGraph:{
+    url:"https://explorewisetips.com",
+    
   }
 
 };

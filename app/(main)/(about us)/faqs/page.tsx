@@ -4,7 +4,10 @@ export const metadata: Metadata = {
     title: "Frenquently asked questions",
     twitter:{
       card:"summary_large_image"
-    }
+    },
+    alternates:{
+      canonical:`${process.env.NEXT_PUBLIC_BASE_URL}/faqs`
+   },
   
   };
 

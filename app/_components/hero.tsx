@@ -37,7 +37,7 @@ const Hero = () => {
 
                 </div>
                 <div className="h-screen px-20 py-12">
-                    <div className=" flex pl-10 flex-col justify-left ">
+                    <div className=" md:flex pl-10 flex-col justify-left ">
                         <div className=" ">
                             <h2 className=" text-right font-black lg:text-6xl text-3xl text-mutedforground  ">
                                 <span className=" text-green-800"> Discover </span> Your Next Horizon
