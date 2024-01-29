@@ -5,6 +5,7 @@ import Sections from "./_components/sections";
 import { Metadata } from "next";
 import { cache } from "react";
 import { notFound } from "next/navigation";
+import { fetcher } from "@/lib/utils";
 
 
 interface SingleBlogPageProps {
@@ -15,8 +16,8 @@ export const revalidate = 3600
 
 
 const getBlog = cache(async(slug:string) => {
-    const response = await axios.get(`https://explorewisetips.com/api/single_blog?slug=${slug}`)
-    const { blog } = await response.data
+    const response = await fetcher(`/api/single_blog?slug=${slug}`)
+    const { blog } = await response
     if (!blog) {
         notFound()
     }
@@ -24,8 +25,8 @@ const getBlog = cache(async(slug:string) => {
 })
 
 export async function generateStaticParams() {
-    const response = await axios.get(`https://explorewisetips.com/api/latest_blogs`)
-    const { documents } = await response.data
+    const response = await fetcher('/api/latest_blogs');
+    const { documents } = await response
 
     return documents.map(({slug}:{slug:string})=>slug)
 }

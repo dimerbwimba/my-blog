@@ -35,7 +35,7 @@ const components: { title: string; href: string; description: string }[] = [
  
 export function NavBar() {
   return (
-    <div className=" fixed p-1 w-full bg-white z-[999999] sm:flex shadow items-center justify-between">
+    <div className=" fixed p-1 w-full bg-white z-[999999] sm:flex border-b items-center justify-between">
       <HomeLogo/>
       <div className=" sm:flex hidden justify-center">
       <NavigationMenu>
@@ -47,33 +47,7 @@ export function NavBar() {
               <b className=" flex flex-col items-center"><HomeIcon className="h-4 w-4 mx-1" /><span className=" font-black text-green-900">Home</span></b>
               </NavigationMenuLink>
             </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              <b className=" flex flex-col items-center"><Globe2 className="h-4 w-4 mx-1" /><span>Destinations</span></b>
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>
-            <b className=" flex flex-col items-center"><Plane className="h-4 w-4 mx-1" /><span>Travel Tips</span></b>
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                {components.map((component) => (
-                  <NavBarItemList
-                    key={component.title}
-                    title={component.title}
-                    href={component.href}
-                  >
-                    {component.description}
-                  </NavBarItemList>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          
+          </NavigationMenuItem>     
         </NavigationMenuList>
       </NavigationMenu>
 

@@ -26,7 +26,7 @@ const  HtmlContent = ({...props}) => {
 export default async function Sections({ _id }: SectionsProps) {
   try {
     const response = await axios.get(
-      `https://explorewisetips.com/api/single_blog_sections?id=${_id}`
+      `http://localhost:3000/api/single_blog_sections?id=${_id}`
     );
     const { sections } = await response.data;
     return (
