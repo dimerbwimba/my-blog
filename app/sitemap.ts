@@ -5,7 +5,7 @@ import { MetadataRoute } from "next";
 export default async function sitemap():Promise<MetadataRoute.Sitemap>{
     try {
         const response = await fetcher(`/api/sitemap/blogs`)
-        const { documents } = await response.data
+        const { documents } = await response
     
         const blogEntries:MetadataRoute.Sitemap = documents.map(({slug, category_name, coverImage}:{slug:string, category_name:string, coverImage:string})=>({
             url:`${process.env.NEXT_PUBLIC_BASE_URL}/${category_name}/${slug}`,
