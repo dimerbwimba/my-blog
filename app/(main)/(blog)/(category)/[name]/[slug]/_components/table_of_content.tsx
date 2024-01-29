@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default  async function  TableOfContent({...props}) {
     try {
-        const response = await axios.get(`http://localhost:3000/api/sections_single_blog?id=${props?._id}`)
+        const response = await axios.get(`https://explorewisetips.com/api/sections_single_blog?id=${props?._id}`)
         const {sections} = await response.data
             return ( 
                 <div className=" flex justify-center">

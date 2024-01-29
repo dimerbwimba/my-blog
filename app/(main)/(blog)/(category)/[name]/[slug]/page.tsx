@@ -14,21 +14,22 @@ interface SingleBlogPageProps {
 export const revalidate = 3600 
 
 
-export async function generateStaticParams() {
-    const response = await axios.get(`http://localhost:3000/api/latest_blogs`)
-    const { documents } = await response.data
-
-    return documents.map(({slug}:{slug:string})=>slug)
-}
-
 const getBlog = cache(async(slug:string) => {
-    const response = await axios.get(`http://localhost:3000/api/single_blog?slug=${slug}`)
+    const response = await axios.get(`https://explorewisetips.com/api/single_blog?slug=${slug}`)
     const { blog } = await response.data
     if (!blog) {
         notFound()
     }
     return blog
 })
+
+export async function generateStaticParams() {
+    const response = await axios.get(`https://explorewisetips.com/api/latest_blogs`)
+    const { documents } = await response.data
+
+    return documents.map(({slug}:{slug:string})=>slug)
+}
+
 
 export async function generateMetadata({ params }: SingleBlogPageProps): Promise<Metadata> {
     const blog = await getBlog(params.slug)
