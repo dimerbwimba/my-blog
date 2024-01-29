@@ -21,7 +21,8 @@ export async function GET(req: Request) {
                     title: 1,
                     html_content: 1,
                     updated_at: 1,
-                    created_at: 1
+                    created_at: 1,
+                    image_url:1
                 }
             }).toArray();
 

@@ -4,6 +4,7 @@ import TableOfContent from "./_components/table_of_content";
 import Sections from "./_components/sections";
 import { Metadata } from "next";
 import { cache } from "react";
+import { notFound } from "next/navigation";
 
 
 interface SingleBlogPageProps {
@@ -12,16 +13,26 @@ interface SingleBlogPageProps {
 
 export const revalidate = 3600 
 
-const getBlog = (async(slug:string) => {
-    const response = await axios.get(`https://explorewisetips.netlify.app/api/single_blog?slug=${slug}`)
-    const { blog } = await response.data
 
+export async function generateStaticParams() {
+    const response = await axios.get(`http://localhost:3000/api/latest_blogs`)
+    const { documents } = await response.data
+
+    return documents.map(({slug}:{slug:string})=>slug)
+}
+
+const getBlog = cache(async(slug:string) => {
+    const response = await axios.get(`http://localhost:3000/api/single_blog?slug=${slug}`)
+    const { blog } = await response.data
+    if (!blog) {
+        notFound()
+    }
     return blog
 })
 
 export async function generateMetadata({ params }: SingleBlogPageProps): Promise<Metadata> {
     const blog = await getBlog(params.slug)
-    const { title, title_seo, description, coverImage, author, created_at, updated_at } = blog
+    const { title_seo, description, coverImage, author, created_at, updated_at } = blog
     return {
         authors:[
             {
@@ -88,9 +99,7 @@ export default async function SingleBlogPage({ params }: SingleBlogPageProps) {
                             />
                         </div>
                     </div>
-                    <div className="prose prose-xl" dangerouslySetInnerHTML={{ __html: blog.html_content }}>
-
-                    </div>
+                    <div className="prose prose-lg" dangerouslySetInnerHTML={{ __html: `${blog.html_content}` }}></div>
                     <div>
                         <div className="">
                             <TableOfContent

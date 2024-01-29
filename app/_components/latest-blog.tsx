@@ -35,7 +35,6 @@ const LatestBlog = () => {
 
    return (
       <section className="flex justify-center flex-col items-center">
-         <h2 className=" text-xl font-bold py-5">Latest from the Blog</h2>
          {
             loading && <div className="relative flex justify-center items-center">
                <div className="absolute animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-green-800"></div>
@@ -48,16 +47,16 @@ const LatestBlog = () => {
             {blogs.map((blog:BlogProps) => (
                <div key={blog._id} className="">
                   <div className="flex flex-col items-end justify-center rounded-md">
-                     <div className=" relative h-52 w-full">
+                     <div className=" relative h-52 w-full rounded">
                         <Image 
                            src={blog.coverImage}
                            alt={blog.slug}
                            layout="fill" // required
                            objectFit="cover" // change to suit your needs
-                           className="" // just an example
+                           className=" rounded" // just an example
                         />
                      </div>
-                     <div className=" px-2">
+                     <div className=" px-2 border rounded-lg">
                         <p className=" font-bold text-muted-foreground">{blog.country_visit}</p>
 
                         <Link href={`/travel-destination/${blog.slug}`}>

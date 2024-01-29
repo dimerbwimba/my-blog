@@ -1,6 +1,8 @@
 import axios from "axios";
 import { AlertOctagon } from "lucide-react";
 import DOMPurify from "isomorphic-dompurify";
+import Image from "next/image";
+import { isURL } from "@/lib/utils";
 
 interface SectionsProps {
   _id: string;
@@ -10,6 +12,7 @@ interface SectionItem {
   _id: string;
   title: string;
   html_content: string;
+  image_url:string;
 }
 
 
@@ -23,13 +26,23 @@ const  HtmlContent = ({...props}) => {
 export default async function Sections({ _id }: SectionsProps) {
   try {
     const response = await axios.get(
-      `https://explorewisetips.netlify.app/api/single_blog_sections?id=${_id}`
+      `http://localhost:3000/api/single_blog_sections?id=${_id}`
     );
     const { sections } = await response.data;
     return (
-      <div className=" prose prose-xl">
+      <div className=" prose prose-lg">
         {sections.map((item: SectionItem) => (
           <div key={item._id} id={item.title}>
+             <div className=" relative w-full flex justify-center rounded">
+                { isURL(item.image_url) && <Image
+                    src={item.image_url}
+                    
+                    width={600}
+                    height={600}
+                    alt="Cover"
+                    className="object-cover rounded"
+                />}
+            </div>
             <h2>{item.title}</h2>
             <HtmlContent html={item.html_content} />
           </div>
