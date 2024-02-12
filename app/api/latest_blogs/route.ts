@@ -11,6 +11,11 @@ export async function GET(req: NextRequest, res: NextResponse) {
         .collection("documents")
         .aggregate([
           {
+            $match:{ 
+              isPublished:true
+            }
+          },
+          {
             $lookup: {
               from: "categories",
               localField: "parentCategory",
