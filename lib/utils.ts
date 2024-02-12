@@ -12,7 +12,7 @@ export const isURL = (str:string) => {
 };
 
 
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL_DEV; // Set your API base URL in your .env.local file
+const baseURL = process.env.NEXT_PUBLIC_BASE_URL; // Set your API base URL in your .env.local file
 
 const axiosFetcher = axios.create({
   baseURL,
