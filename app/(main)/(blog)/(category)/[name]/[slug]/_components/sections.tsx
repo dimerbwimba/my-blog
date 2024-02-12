@@ -38,7 +38,7 @@ export default async function Sections({ _id }: SectionsProps) {
                     
                     width={600}
                     height={600}
-                    alt="Cover"
+                    alt={item.title}
                     className="object-cover rounded"
                 />}
             </div>
