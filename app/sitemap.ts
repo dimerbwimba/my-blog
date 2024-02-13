@@ -18,43 +18,43 @@ export default async function sitemap():Promise<MetadataRoute.Sitemap>{
             {
                 priority:1,
                 changeFrequency:"daily",
-                lastModified: JSON.stringify(moment(Date.now()).format()),
+                lastModified: moment(Date.now()).format("YYYY-MM-DD"),
                 url:`${process.env.NEXT_PUBLIC_BASE_URL}`
             },
             {
                 priority:1,
                 changeFrequency:"daily",
-                lastModified: JSON.stringify(moment(Date.now()).format()),
+                lastModified:  moment(Date.now()).format("YYYY-MM-DD"),
                 url:`${process.env.NEXT_PUBLIC_BASE_URL}/contact`
             },
             {
                 priority:1,
                 changeFrequency:"daily",
-                lastModified: JSON.stringify(moment(Date.now()).format()),
+                lastModified:  moment(Date.now()).format("YYYY-MM-DD"),
                 url:`${process.env.NEXT_PUBLIC_BASE_URL}/faqs`
             },
 
             {
                 priority:1,
                 changeFrequency:"daily",
-                lastModified: JSON.stringify(moment(Date.now()).format()),
+                lastModified:  moment(Date.now()).format("YYYY-MM-DD"),
                 url:`${process.env.NEXT_PUBLIC_BASE_URL}/privacy-policy`
             },
             {
                 priority:1,
-                lastModified: JSON.stringify(moment(Date.now()).format()),
+                lastModified:  moment(Date.now()).format("YYYY-MM-DD"),
                 url:`${process.env.NEXT_PUBLIC_BASE_URL}/disclaimer`
             },
             {
                 priority:1,
                 changeFrequency:"daily",
-                lastModified: JSON.stringify(moment(Date.now()).format()),
+                lastModified:  moment(Date.now()).format("YYYY-MM-DD"),
                 url:`${process.env.NEXT_PUBLIC_BASE_URL}/affiliate-disclosure`
             },
             {
                 priority:1,
                 changeFrequency:"daily",
-                lastModified: JSON.stringify(moment(Date.now()).format()),
+                lastModified:  moment(Date.now()).format("YYYY-MM-DD"),
                 url:`${process.env.NEXT_PUBLIC_BASE_URL}/about-us`
             },
             
