@@ -9,7 +9,7 @@ export default async function sitemap():Promise<MetadataRoute.Sitemap>{
     
         const blogEntries:MetadataRoute.Sitemap = documents.map(({slug, category_name, coverImage}:{slug:string, category_name:string, coverImage:string})=>({
             url:`${process.env.NEXT_PUBLIC_BASE_URL}/${category_name}/${slug}`,
-            lastModified: JSON.stringify(moment(Date.now()).format()),
+            lastModified:  moment(Date.now()).format("YYYY-MM-DD"),
             changeFrequency:"daily",
             priority:1,
         }))
