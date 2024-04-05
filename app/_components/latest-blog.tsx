@@ -18,7 +18,7 @@ export default async function LatestBlog() {
    return (
       <section className="flex justify-center flex-col items-center">
 
-         <div className=" grid grid-cols-3 gap-4 w-2/3">
+         <div className=" grid grid-cols-2 gap-4 w-2/3">
             {blogs?.map((blog: BlogProps) => (
                <div key={blog._id} className="">
                   <div className="flex flex-col items-end justify-center rounded-md">
